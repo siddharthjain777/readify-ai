@@ -5,13 +5,28 @@ from azure.cognitiveservices.vision.computervision.models import OperationStatus
 from msrest.authentication import CognitiveServicesCredentials
 import time
 
-# 🌌 Supernova motion background (video embed)
+# 🌌 Supernova static wallpaper
+page_bg = """
+<style>
+[data-testid="stAppViewContainer"] {
+    background-image: url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa");
+    background-size: cover;
+    background-position: center;
+}
+[data-testid="stHeader"] {
+    background: rgba(0,0,0,0);
+}
+</style>
+"""
+st.markdown(page_bg, unsafe_allow_html=True)
+
+# ✨ Animated GIF overlay (motion effect)
 st.markdown(
     """
-    <video autoplay muted loop id="bgvideo" style="position: fixed; right: 0; bottom: 0;
-    min-width: 100%; min-height: 100%; z-index: -1;">
-      <source src="https://cdn.pixabay.com/video/2017/09/07/12345-234567.mp4" type="video/mp4">
-    </video>
+    <div style="position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; opacity:0.25;">
+        <img src="https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif" 
+             style="width:100%; height:100%; object-fit:cover;">
+    </div>
     """,
     unsafe_allow_html=True
 )
