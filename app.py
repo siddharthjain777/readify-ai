@@ -8,7 +8,7 @@ from azure.cognitiveservices.vision.computervision.models import OperationStatus
 from msrest.authentication import CognitiveServicesCredentials
 import time
 
-# 🌌 Supernova static wallpaper
+# 🌌 Space wallpaper (static)
 page_bg = """
 <style>
 [data-testid="stAppViewContainer"] {
@@ -23,38 +23,32 @@ page_bg = """
 """
 st.markdown(page_bg, unsafe_allow_html=True)
 
-# 🎨 Custom Title in Algerian font
+# 🎨 Title in Algerian font, dark blue
 st.markdown(
-    "<h1 style='text-align: center; color: darkblue; font-family: Algerian; font-size: 55px;'>"
+    "<h1 style='text-align: center; color: darkblue; font-family: Algerian; font-size: 50px;'>"
     "READIFY AI...BY SIDDHARTH JAIN</h1>",
     unsafe_allow_html=True
 )
 
-# 🌠 Stylish radio buttons (space vibe)
+# ✨ Simple styling for radio buttons and inputs
 custom_css = """
 <style>
 .stRadio > div {
-    background-color: rgba(0,0,50,0.6);
-    padding: 10px;
-    border-radius: 10px;
-    color: #00ffff;
-    font-weight: bold;
-    font-size: 18px;
-}
-.stRadio label {
-    color: #ffcc00 !important;
+    background-color: rgba(0,0,50,0.5);
+    padding: 8px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 16px;
 }
 .stButton>button {
-    background-color: #4B0082;
+    background-color: darkblue;
     color: white;
-    border-radius: 12px;
-    font-size: 18px;
-    font-weight: bold;
+    border-radius: 6px;
+    font-size: 15px;
 }
 .stTextArea textarea {
-    background-color: rgba(0,0,0,0.7);
-    color: #00ff00;
-    font-family: monospace;
+    background-color: rgba(0,0,0,0.6);
+    color: #00ffcc;
 }
 </style>
 """
@@ -97,24 +91,24 @@ def text_to_speech_file(text, filename="output.wav"):
     return filename
 
 # Streamlit UI
-task = st.radio("Choose a task:", ["🌌 Image → Text", "🚀 Text → Speech", "✨ Image → Speech"])
+task = st.radio("Choose a task:", ["Image → Text", "Text → Speech", "Image → Speech"])
 
 uploaded_file = st.file_uploader("Upload a PNG image", type=["png"])
 
-if task == "🌌 Image → Text" and uploaded_file:
+if task == "Image → Text" and uploaded_file:
     with open("temp.png", "wb") as f:
         f.write(uploaded_file.getbuffer())
     extracted_text = extract_text("temp.png")
     st.subheader("Extracted Text:")
     st.write(extracted_text)
 
-elif task == "🚀 Text → Speech":
+elif task == "Text → Speech":
     text_input = st.text_area("Enter text to speak:")
     if st.button("Speak"):
         audio_file = text_to_speech_file(text_input, "tts.wav")
         st.audio(audio_file)
 
-elif task == "✨ Image → Speech" and uploaded_file:
+elif task == "Image → Speech" and uploaded_file:
     with open("temp.png", "wb") as f:
         f.write(uploaded_file.getbuffer())
     extracted_text = extract_text("temp.png")
