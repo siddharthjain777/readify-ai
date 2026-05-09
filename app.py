@@ -5,43 +5,23 @@ from azure.cognitiveservices.vision.computervision.models import OperationStatus
 from msrest.authentication import CognitiveServicesCredentials
 import time
 
-page_bg = """
-<style>
-[data-testid="stAppViewContainer"] {
-    background-image: url("https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-[data-testid="stHeader"] {
-    background: rgba(0,0,0,0);
-}
-[data-testid="stToolbar"] {
-    right: 2rem;
-}
-</style>
-"""
-st.markdown(page_bg, unsafe_allow_html=True)
+# 🌌 Supernova motion background (video embed)
+st.markdown(
+    """
+    <video autoplay muted loop id="bgvideo" style="position: fixed; right: 0; bottom: 0;
+    min-width: 100%; min-height: 100%; z-index: -1;">
+      <source src="https://cdn.pixabay.com/video/2017/09/07/12345-234567.mp4" type="video/mp4">
+    </video>
+    """,
+    unsafe_allow_html=True
+)
 
-
-custom_css = """
-<style>
-.stButton>button {
-    background-color: purple;
-    color: white;
-    border-radius: 10px;
-    font-size: 18px;
-}
-.stTextArea textarea {
-    background-color: #222;
-    color: #0f0;
-    font-family: monospace;
-}
-</style>
-"""
-st.markdown(custom_css, unsafe_allow_html=True)
-
-
+# 🎨 Custom Title
+st.markdown(
+    "<h1 style='text-align: center; color: darkblue; font-family: Verdana; font-size: 50px;'>"
+    "READIFY AI...BY SIDDHARTH JAIN</h1>",
+    unsafe_allow_html=True
+)
 
 # Load secrets from Streamlit Cloud
 speech_key = st.secrets["speech_key"]
@@ -80,14 +60,6 @@ def text_to_speech_file(text, filename="output.wav"):
     return filename
 
 # Streamlit UI
-st.markdown(
-    "<h1 style='text-align: center; color: darkblue; font-family: Verdana; font-size: 50px;'>"
-    "READIFY AI...BY SIDDHARTH JAIN</h1>",
-    unsafe_allow_html=True
-)
-
-
-
 task = st.radio("Choose a task:", ["Image → Text", "Text → Speech", "Image → Speech"])
 
 uploaded_file = st.file_uploader("Upload a PNG image", type=["png"])
