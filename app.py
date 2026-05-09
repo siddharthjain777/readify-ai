@@ -8,7 +8,7 @@ from azure.cognitiveservices.vision.computervision.models import OperationStatus
 from msrest.authentication import CognitiveServicesCredentials
 import time
 
-# 🌌 Space wallpaper (static)
+# 🌌 Simple space wallpaper
 page_bg = """
 <style>
 [data-testid="stAppViewContainer"] {
@@ -23,36 +23,8 @@ page_bg = """
 """
 st.markdown(page_bg, unsafe_allow_html=True)
 
-# 🎨 Title in Algerian font, dark blue
-st.markdown(
-    "<h1 style='text-align: center; color: darkblue; font-family: Algerian; font-size: 50px;'>"
-    "READIFY AI...BY SIDDHARTH JAIN</h1>",
-    unsafe_allow_html=True
-)
-
-# ✨ Simple styling for radio buttons and inputs
-custom_css = """
-<style>
-.stRadio > div {
-    background-color: rgba(0,0,50,0.5);
-    padding: 8px;
-    border-radius: 8px;
-    color: #ffffff;
-    font-size: 16px;
-}
-.stButton>button {
-    background-color: darkblue;
-    color: white;
-    border-radius: 6px;
-    font-size: 15px;
-}
-.stTextArea textarea {
-    background-color: rgba(0,0,0,0.6);
-    color: #00ffcc;
-}
-</style>
-"""
-st.markdown(custom_css, unsafe_allow_html=True)
+# Normal title
+st.title("READIFY AI...BY SIDDHARTH JAIN")
 
 # Load secrets from Streamlit Cloud
 speech_key = st.secrets["speech_key"]
@@ -118,11 +90,6 @@ elif task == "Image → Speech" and uploaded_file:
         audio_file = text_to_speech_file(extracted_text, "image_speech.wav")
         st.audio(audio_file)
 
-# ❤️ Footer
-st.markdown(
-    "<h3 style='text-align: center; color: white;'>MADE WITH ❤️...BY 🚀SIDDHARTH JAIN🌌</h3>",
-    unsafe_allow_html=True
-)
 
 
 
