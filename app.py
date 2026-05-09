@@ -8,9 +8,10 @@ import time
 page_bg = """
 <style>
 [data-testid="stAppViewContainer"] {
-    background-image: url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa");
+    background-image: url("https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif");
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 }
 [data-testid="stHeader"] {
     background: rgba(0,0,0,0);
@@ -21,6 +22,7 @@ page_bg = """
 </style>
 """
 st.markdown(page_bg, unsafe_allow_html=True)
+
 
 custom_css = """
 <style>
@@ -79,10 +81,11 @@ def text_to_speech_file(text, filename="output.wav"):
 
 # Streamlit UI
 st.markdown(
-    "<h1 style='text-align: center; color: cyan; font-family: Courier; font-size: 50px;'>"
+    "<h1 style='text-align: center; color: darkblue; font-family: Verdana; font-size: 50px;'>"
     "READIFY AI...BY SIDDHARTH JAIN</h1>",
     unsafe_allow_html=True
 )
+
 
 
 task = st.radio("Choose a task:", ["Image → Text", "Text → Speech", "Image → Speech"])
