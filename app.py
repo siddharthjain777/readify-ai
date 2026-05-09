@@ -20,16 +20,8 @@ page_bg = """
 """
 st.markdown(page_bg, unsafe_allow_html=True)
 
-# ✨ Animated GIF overlay (motion effect)
-st.markdown(
-    """
-    <div style="position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; opacity:0.25;">
-        <img src="https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif" 
-             style="width:100%; height:100%; object-fit:cover;">
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+# ✨ Animated GIF element (motion effect at top)
+st.image("https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif", use_column_width=True)
 
 # 🎨 Custom Title
 st.markdown(
