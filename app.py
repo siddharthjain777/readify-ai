@@ -9,7 +9,7 @@ import time
 page_bg = """
 <style>
 [data-testid="stAppViewContainer"] {
-    background-image: url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa");
+    background-image: url("https://cdn.pixabay.com/photo/2013/07/18/10/56/supernova-163711_1280.jpg");
     background-size: cover;
     background-position: center;
 }
