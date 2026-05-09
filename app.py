@@ -5,6 +5,42 @@ from azure.cognitiveservices.vision.computervision.models import OperationStatus
 from msrest.authentication import CognitiveServicesCredentials
 import time
 
+page_bg = """
+<style>
+[data-testid="stAppViewContainer"] {
+    background-image: url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa");
+    background-size: cover;
+    background-position: center;
+}
+[data-testid="stHeader"] {
+    background: rgba(0,0,0,0);
+}
+[data-testid="stToolbar"] {
+    right: 2rem;
+}
+</style>
+"""
+st.markdown(page_bg, unsafe_allow_html=True)
+
+custom_css = """
+<style>
+.stButton>button {
+    background-color: purple;
+    color: white;
+    border-radius: 10px;
+    font-size: 18px;
+}
+.stTextArea textarea {
+    background-color: #222;
+    color: #0f0;
+    font-family: monospace;
+}
+</style>
+"""
+st.markdown(custom_css, unsafe_allow_html=True)
+
+
+
 # Load secrets from Streamlit Cloud
 speech_key = st.secrets["speech_key"]
 speech_region = st.secrets["speech_region"]
@@ -42,7 +78,12 @@ def text_to_speech_file(text, filename="output.wav"):
     return filename
 
 # Streamlit UI
-st.title("📢 Readify AI: Extract & Speak Text Instantly")
+st.markdown(
+    "<h1 style='text-align: center; color: cyan; font-family: Courier; font-size: 50px;'>"
+    "READIFY AI...BY SIDDHARTH JAIN</h1>",
+    unsafe_allow_html=True
+)
+
 
 task = st.radio("Choose a task:", ["Image → Text", "Text → Speech", "Image → Speech"])
 
