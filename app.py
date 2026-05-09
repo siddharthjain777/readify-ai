@@ -8,11 +8,11 @@ from azure.cognitiveservices.vision.computervision.models import OperationStatus
 from msrest.authentication import CognitiveServicesCredentials
 import time
 
-# 🌌 Simple space wallpaper
+# 🌌 Space wallpaper (static)
 page_bg = """
 <style>
 [data-testid="stAppViewContainer"] {
-    background-image: url("https://cdn.pixabay.com/photo/2013/07/18/10/56/supernova-163711_1280.jpg");
+    background-image: url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564");
     background-size: cover;
     background-position: center;
 }
@@ -23,8 +23,12 @@ page_bg = """
 """
 st.markdown(page_bg, unsafe_allow_html=True)
 
-# Normal title
-st.title("READIFY AI...BY SIDDHARTH JAIN")
+# 🎨 Title in Algerian font, dark blue
+st.markdown(
+    "<h1 style='text-align: center; color: darkblue; font-family: Algerian; font-size: 50px;'>"
+    "READIFY AI...BY SIDDHARTH JAIN</h1>",
+    unsafe_allow_html=True
+)
 
 # Load secrets from Streamlit Cloud
 speech_key = st.secrets["speech_key"]
@@ -89,6 +93,7 @@ elif task == "Image → Speech" and uploaded_file:
     if st.button("Speak Extracted Text"):
         audio_file = text_to_speech_file(extracted_text, "image_speech.wav")
         st.audio(audio_file)
+
 
 
 
