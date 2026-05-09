@@ -1,3 +1,6 @@
+# MADE WITH LOVE BY 🚀SIDDHARTH🌌
+
+
 import streamlit as st
 import azure.cognitiveservices.speech as speechsdk
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
@@ -20,15 +23,42 @@ page_bg = """
 """
 st.markdown(page_bg, unsafe_allow_html=True)
 
-# ✨ Animated GIF element (motion effect at top)
-st.image("https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif", use_column_width=True)
-
-# 🎨 Custom Title
+# 🎨 Custom Title in Algerian font
 st.markdown(
-    "<h1 style='text-align: center; color: darkblue; font-family: Verdana; font-size: 50px;'>"
+    "<h1 style='text-align: center; color: darkblue; font-family: Algerian; font-size: 55px;'>"
     "READIFY AI...BY SIDDHARTH JAIN</h1>",
     unsafe_allow_html=True
 )
+
+# 🌠 Stylish radio buttons (space vibe)
+custom_css = """
+<style>
+.stRadio > div {
+    background-color: rgba(0,0,50,0.6);
+    padding: 10px;
+    border-radius: 10px;
+    color: #00ffff;
+    font-weight: bold;
+    font-size: 18px;
+}
+.stRadio label {
+    color: #ffcc00 !important;
+}
+.stButton>button {
+    background-color: #4B0082;
+    color: white;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.stTextArea textarea {
+    background-color: rgba(0,0,0,0.7);
+    color: #00ff00;
+    font-family: monospace;
+}
+</style>
+"""
+st.markdown(custom_css, unsafe_allow_html=True)
 
 # Load secrets from Streamlit Cloud
 speech_key = st.secrets["speech_key"]
@@ -67,24 +97,24 @@ def text_to_speech_file(text, filename="output.wav"):
     return filename
 
 # Streamlit UI
-task = st.radio("Choose a task:", ["Image → Text", "Text → Speech", "Image → Speech"])
+task = st.radio("Choose a task:", ["🌌 Image → Text", "🚀 Text → Speech", "✨ Image → Speech"])
 
 uploaded_file = st.file_uploader("Upload a PNG image", type=["png"])
 
-if task == "Image → Text" and uploaded_file:
+if task == "🌌 Image → Text" and uploaded_file:
     with open("temp.png", "wb") as f:
         f.write(uploaded_file.getbuffer())
     extracted_text = extract_text("temp.png")
     st.subheader("Extracted Text:")
     st.write(extracted_text)
 
-elif task == "Text → Speech":
+elif task == "🚀 Text → Speech":
     text_input = st.text_area("Enter text to speak:")
     if st.button("Speak"):
         audio_file = text_to_speech_file(text_input, "tts.wav")
         st.audio(audio_file)
 
-elif task == "Image → Speech" and uploaded_file:
+elif task == "✨ Image → Speech" and uploaded_file:
     with open("temp.png", "wb") as f:
         f.write(uploaded_file.getbuffer())
     extracted_text = extract_text("temp.png")
@@ -93,3 +123,13 @@ elif task == "Image → Speech" and uploaded_file:
     if st.button("Speak Extracted Text"):
         audio_file = text_to_speech_file(extracted_text, "image_speech.wav")
         st.audio(audio_file)
+
+# ❤️ Footer
+st.markdown(
+    "<h3 style='text-align: center; color: white;'>MADE WITH ❤️...BY 🚀SIDDHARTH JAIN🌌</h3>",
+    unsafe_allow_html=True
+)
+
+
+
+#🚀CREATOR🌌
